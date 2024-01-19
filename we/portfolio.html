@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Portfolio</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('WhatsApp Image 2024-01-19 at 12.21.18.jpeg') center/cover no-repeat; /* Replace 'background-image.jpg' with your actual background image URL */
+        }
+
+        #container {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px; /* Set a maximum width for the container */
+            width: 90%; /* Set a width for the container */
+            margin: 0 auto; /* Center the container */
+        }
+
+        h1 {
+            color: #ff4500; /* Orange-red color */
+            font-size: 2em; /* Larger font size */
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #4CAF50; /* Green color */
+            font-size: 1.2em; /* Larger font size */
+            margin: 10px 0;
+        }
+
+        #countdown {
+            font-size: 24px;
+            color: #333; /* Dark gray color */
+            margin-top: 20px;
+        }
+
+        #datetime {
+            font-size: 18px;
+            color: #777; /* Light gray color */
+            margin-top: 10px;
+        }
+
+        #centerImage {
+            margin-top: 20px;
+            width: 100%; /* Make the centered image responsive */
+            max-width: 200px; /* Set a maximum width for the centered image */
+            cursor: pointer;
+            border-radius: 10px; /* Rounded corners */
+        }
+
+        #giftBox {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 50px;
+            height: 50px;
+            background: url('WhatsApp Image 2024-01-19 at 12.21.18 (1).jpeg') center/cover no-repeat; /* Replace 'gift-box.png' with your actual gift box image URL */
+            cursor: pointer;
+        }
+
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+
+        #popup p {
+            margin: 0;
+            color: #333;
+            font-size: 1.2em; /* Larger font size */
+        }
+
+        #popup button {
+            background-color: #ff4500;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em; /* Adjust font size */
+        }
+
+        /* Media query for smaller screens */
+        @media only screen and (max-width: 600px) {
+            #container {
+                max-width: 100%; /* Set full width for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <h1>Happy Birthday!</h1>
+    <p>
+        "Happy Birthday! 🎉🎂 Wishing you a day filled with love, laughter, and all the joy in the world. 
+        May this year bring you countless blessings and unforgettable moments. Cheers to another amazing journey around the sun! 🥳🎈".</p>
+    
+    <p>
+        "Dil se bhejti hoon yeh pyaari si sayari,
+        Janamdin ki dher saari badhai ho tumhari.
+        Khushiyo ka mel hai, hanso tum hamesha,
+        Zindagi bhar khush raho, yeh meri dua hai sada."</p>
+
+    <img id="centerImage" src="WhatsApp Image 2024-01-19 at 12.21.18 (1).jpeg" alt="Birthday Image" width="200">
+
+    <div id="countdown"></div>
+    <div id="datetime"></div>
+
+    <!-- Gift box element -->
+    <div id="giftBox" onclick="showPopup()"></div>
+
+    <!-- Popup message -->
+    <div id="popup">
+        <p>Gu Khao!</p>
+        <button onclick="hidePopup()">Close</button>
+    </div>
+</div>
+
+<script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("Jan 1, 2025 00:00:00").getTime();
+
+    // Update the countdown and current date every 1 second
+    var x = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+
+        // var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        // var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        // var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        // var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+        //     + minutes + "m " + seconds + "s ";
+
+        // If the countdown is over, show a message
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("countdown").innerHTML = "Happy Birthday!";
+        }
+
+        // Display the current date and time
+        var currentDate = new Date();
+        document.getElementById("datetime").innerHTML = "latt leelooo: " + currentDate.toLocaleString();
+    }, 1000);
+
+    // Show popup function
+    function showPopup() {
+        document.getElementById("popup").style.display = "block";
+    }
+
+    // Hide popup function
+    function hidePopup() {
+        document.getElementById("popup").style.display = "none";
+    }
+</script>
+
+</body>
+</html>
